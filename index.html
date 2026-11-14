@@ -90,9 +90,12 @@
     <!-- ================= HERO ================= -->
     <section class="hero" aria-label="Introduction">
       <div class="hero__card">
-        <img class="hero__img hero__bg" src="assets/img/hero-bg.webp" alt="" fetchpriority="high" />
-        <div class="hero__wm" aria-hidden="true"><span class="hero__wm-inner" data-split="Sunvolt Energy"></span></div>
-        <img class="hero__img hero__fg" src="assets/img/hero-foreground.webp" alt="Solar farm and wind turbines on a green hillside by the ocean" />
+        <div class="hero__stage"><div class="hero__media">
+          <img class="hero__img hero__bg" src="assets/img/hero-bg.webp" alt="" fetchpriority="high" />
+          <!-- Watermark sits in the sea band (horizon → coastline) and rises out of the water -->
+          <div class="hero__sea" aria-hidden="true"><span class="hero__wm" data-split="Sunvolt Energy"></span></div>
+          <img class="hero__img hero__fg" src="assets/img/hero-foreground.webp" alt="Solar farm and wind turbines on a green hillside by the ocean" />
+        </div></div>
         <div class="hero__shade-v"></div><div class="hero__shade-h"></div>
 
         <div class="nav">
@@ -111,7 +114,7 @@
           <div class="hero__content">
             <span class="pill pill--glass fade-up" style="--d:.2s">Trusted by 150+ homes, farms &amp; businesses</span>
             <h1 class="hero__title" aria-label="Power Smarter, Live Greener.">
-              <span class="w" style="--i:0">Power</span> <span class="w" style="--i:1">Smarter,</span><br />
+              <span class="w" style="--i:0">Power</span> <span class="w" style="--i:1">Smarter,</span> <br />
               <span class="w" style="--i:2">Live</span> <span class="w w--accent" style="--i:3">Greener.</span>
             </h1>
             <p class="hero__sub t-body-l fade-up" style="--d:1s">Sunvolt Energy designs and installs reliable clean energy systems — from solar panels and wind turbines to EV charging and battery storage — helping you cut energy costs and build a more sustainable future.</p>
@@ -149,7 +152,7 @@
     <!-- ================= TRUST STRIP ================= -->
     <section class="trust" aria-label="Partners">
       <div class="container trust__inner">
-        <p class="trust__label">Certified &amp; trusted by leading<br />energy partners</p>
+        <p class="trust__label">Certified &amp; trusted by leading <br />energy partners</p>
         <div class="marquee">
           <div class="marquee__track">
             <div class="marquee__group">
@@ -171,7 +174,7 @@
         <div class="sec-head reveal">
           <div class="sec-head__main">
             <span class="pill pill--light">Why Sunvolt</span>
-            <h2 class="t-h1" id="perf-title">Trusted Energy,<br />Long-Term Performance.</h2>
+            <h2 class="t-h1" id="perf-title">Trusted Energy, <br />Long-Term Performance.</h2>
           </div>
           <p class="sec-head__desc t-body-m c-secondary">From initial planning to final installation, Sunvolt Energy focuses on safety, efficiency and measurable energy results — so every system keeps paying you back for decades.</p>
         </div>
@@ -236,7 +239,7 @@
       <div class="calc__card">
         <div class="calc__head reveal">
           <span class="pill pill--dark">Our Savings Calculator</span>
-          <h2 class="t-h1" id="calc-title">See How Much You Could Save<br />Before You Spend a Dollar</h2>
+          <h2 class="t-h1" id="calc-title">See How Much You Could Save <br />Before You Spend a Dollar</h2>
           <p class="t-body-l">Answer 4 quick questions. We’ll estimate your yearly savings, payback period and the right system size for your property.</p>
         </div>
         <div class="calc__body">
@@ -310,7 +313,7 @@
       <div class="container">
         <div class="sec-head--center sec-head reveal">
           <span class="pill pill--light">How It Works</span>
-          <h2 class="t-h1" id="how-title">Your Clean Energy Journey<br />in 3 Simple Steps</h2>
+          <h2 class="t-h1" id="how-title">Your Clean Energy Journey <br />in 3 Simple Steps</h2>
         </div>
         <div class="steps">
           <article class="step photo-card reveal" style="--o:.48">
@@ -337,34 +340,72 @@
     <section class="services" id="services" aria-labelledby="svc-title">
       <div class="container">
         <div class="sec-head reveal">
-          <div class="sec-head__main"><span class="pill pill--dark">Our Services</span><h2 class="t-h1" id="svc-title">Complete Renewable Energy<br />Installation Services</h2></div>
+          <div class="sec-head__main"><span class="pill pill--dark">Our Services</span><h2 class="t-h1" id="svc-title">Complete Renewable Energy <br />Installation Services</h2></div>
           <p class="sec-head__desc t-body-m">Sunvolt Energy provides clean energy solutions for homes, commercial properties and modern infrastructure projects — one team from design to maintenance.</p>
         </div>
-        <div class="svc-grid">
-          <a class="svc svc--featured reveal" href="#contact">
+        <div class="svc-grid" id="svcGrid">
+          <a class="svc is-active reveal" style="--d:0.00s" href="#contact">
             <div class="svc__media photo-card">
               <img src="assets/img/service-solar.webp" alt="Installer mounting solar panels on a roof" loading="lazy" />
               <div class="photo-card__shade"></div>
-              <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-sun"/></svg></span>
-              <div class="svc__details">
-                <h3 class="t-h4">Solar Panel Installation</h3>
-                <p class="t-body-s c-muted">We design and install efficient solar systems for homes, farms and businesses — lowering bills, cutting emissions and adding long-term value.</p>
-                <span class="t-label-m c-brand">Best for</span>
-                <div class="tags"><span class="tag">Homes</span><span class="tag">Farms</span><span class="tag">Warehouses</span><span class="tag">Offices</span><span class="tag">Retail</span><span class="tag">Schools</span></div>
+              <div class="svc__inner">
+                <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-sun"/></svg></span>
+                <div class="svc__details">
+                  <h3 class="t-h4">Solar Panel Installation</h3>
+                  <p class="t-body-s c-muted">We design and install efficient solar systems for homes, farms and businesses — lowering bills, cutting emissions and adding long-term value.</p>
+                  <span class="t-label-m c-brand">Best for</span>
+                  <div class="tags"><span class="tag">Homes</span><span class="tag">Farms</span><span class="tag">Warehouses</span><span class="tag">Offices</span><span class="tag">Retail</span><span class="tag">Schools</span></div>
+                </div>
               </div>
             </div>
             <div class="svc__label"><span class="t-label-l">Solar Panel Installation</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
           </a>
-          <a class="svc reveal" style="--d:.08s" href="#contact">
-            <div class="svc__media photo-card"><img src="assets/img/service-wind.webp" alt="Engineers climbing a wind turbine stair" loading="lazy" /></div>
+          <a class="svc reveal" style="--d:0.08s" href="#contact">
+            <div class="svc__media photo-card">
+              <img style="--fx:62%" src="assets/img/service-wind.webp" alt="Engineers climbing a wind turbine stair" loading="lazy" />
+              <div class="photo-card__shade"></div>
+              <div class="svc__inner">
+                <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-wind"/></svg></span>
+                <div class="svc__details">
+                  <h3 class="t-h4">Wind Turbine Installation</h3>
+                  <p class="t-body-s c-muted">Small and mid-scale turbines for open land and farms — sized from a real wind-speed study so every blade earns its keep.</p>
+                  <span class="t-label-m c-brand">Best for</span>
+                  <div class="tags"><span class="tag">Farms</span><span class="tag">Rural homes</span><span class="tag">Ranches</span><span class="tag">Industrial sites</span></div>
+                </div>
+              </div>
+            </div>
             <div class="svc__label"><span class="t-label-l">Wind Turbine Installation</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
           </a>
-          <a class="svc reveal" style="--d:.16s" href="#contact">
-            <div class="svc__media photo-card"><img src="assets/img/service-ev.webp" alt="EV charging station next to a car" loading="lazy" /></div>
+          <a class="svc reveal" style="--d:0.16s" href="#contact">
+            <div class="svc__media photo-card">
+              <img style="--fx:60%" src="assets/img/service-ev.webp" alt="EV charging station next to a car" loading="lazy" />
+              <div class="photo-card__shade"></div>
+              <div class="svc__inner">
+                <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-plug"/></svg></span>
+                <div class="svc__details">
+                  <h3 class="t-h4">EV Charging Station</h3>
+                  <p class="t-body-s c-muted">Level 2 and DC fast chargers for homes, fleets and car parks — with load management, billing and solar-powered charging.</p>
+                  <span class="t-label-m c-brand">Best for</span>
+                  <div class="tags"><span class="tag">Homes</span><span class="tag">Offices</span><span class="tag">Fleets</span><span class="tag">Retail</span><span class="tag">Apartments</span></div>
+                </div>
+              </div>
+            </div>
             <div class="svc__label"><span class="t-label-l">EV Charging Station</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
           </a>
-          <a class="svc reveal" style="--d:.24s" href="#contact">
-            <div class="svc__media photo-card"><img src="assets/img/service-storage.webp" alt="Technician at a battery storage unit" loading="lazy" /></div>
+          <a class="svc reveal" style="--d:0.24s" href="#contact">
+            <div class="svc__media photo-card">
+              <img style="--fx:62%" src="assets/img/service-storage.webp" alt="Technician at a battery storage unit" loading="lazy" />
+              <div class="photo-card__shade"></div>
+              <div class="svc__inner">
+                <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-battery"/></svg></span>
+                <div class="svc__details">
+                  <h3 class="t-h4">Energy Storage</h3>
+                  <p class="t-body-s c-muted">Battery systems that store your solar power for the evening and keep the lights on during grid outages.</p>
+                  <span class="t-label-m c-brand">Best for</span>
+                  <div class="tags"><span class="tag">Homes</span><span class="tag">Farms</span><span class="tag">Businesses</span><span class="tag">Clinics</span><span class="tag">Data rooms</span></div>
+                </div>
+              </div>
+            </div>
             <div class="svc__label"><span class="t-label-l">Energy Storage</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
           </a>
         </div>
@@ -380,7 +421,7 @@
       <div class="container">
         <div class="sec-head sec-head--center reveal">
           <span class="pill pill--light">Installation Process</span>
-          <h2 class="t-h1" id="process-title">From Site Visit to Clean Power —<br />We Handle Everything</h2>
+          <h2 class="t-h1" id="process-title">From Site Visit to Clean Power — <br />We Handle Everything</h2>
           <p class="t-body-l c-secondary">Most projects go live in 4–8 weeks. You get one dedicated project manager from day one.</p>
         </div>
         <div class="pbento">
@@ -440,7 +481,7 @@
     <section class="finance" aria-labelledby="fin-title">
       <div class="container">
         <div class="finance__text reveal">
-          <h2 class="t-h2" id="fin-title">Go Solar for $0<br />Down — Let Incentives Do the Heavy Lifting</h2>
+          <h2 class="t-h2" id="fin-title">Go Solar for $0 <br />Down — Let Incentives Do the Heavy Lifting</h2>
           <p class="t-body-m c-secondary">Between federal tax credits, local rebates and flexible financing, most of our customers start saving from the very first month — without a large upfront investment.</p>
           <ul class="finance__checks">
             <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>We file all rebate &amp; tax credit paperwork for you</li>
@@ -465,7 +506,7 @@
     <section class="cases" id="projects" aria-labelledby="cases-title">
       <div class="container">
         <div class="sec-head reveal">
-          <div class="sec-head__main"><span class="pill pill--light">Customer Results</span><h2 class="t-h1" id="cases-title">Real Energy Projects.<br />Real Performance Results.</h2></div>
+          <div class="sec-head__main"><span class="pill pill--light">Customer Results</span><h2 class="t-h1" id="cases-title">Real Energy Projects. <br />Real Performance Results.</h2></div>
           <div class="cases__nav">
             <button class="round-btn round-btn--outline" type="button" data-prev aria-label="Previous project"><svg class="icon"><use href="#i-arrow-left"/></svg></button>
             <button class="round-btn round-btn--dark" type="button" data-next aria-label="Next project"><svg class="icon"><use href="#i-arrow-right"/></svg></button>
@@ -514,7 +555,7 @@
                 </div>
                 <a class="btn btn--primary" href="#contact">View Project Details<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
               </div>
-              <div class="slide__media"><span class="ph"><svg class="icon"><use href="#i-image"/></svg>Warehouse rooftop solar array</span></div>
+              <div class="slide__media"><img src="assets/img/case-warehouse.webp" alt="Warehouse with a large rooftop solar array" loading="lazy" /></div>
             </article>
             <!-- Slide 3 -->
             <article class="slide" aria-roledescription="slide" aria-label="3 of 3">
@@ -535,7 +576,7 @@
                 </div>
                 <a class="btn btn--primary" href="#contact">View Project Details<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
               </div>
-              <div class="slide__media"><span class="ph"><svg class="icon"><use href="#i-image"/></svg>Home roof solar with EV in driveway</span></div>
+              <div class="slide__media"><img src="assets/img/case-home.webp" alt="Home with rooftop solar, battery and EV charging in the driveway" loading="lazy" /></div>
             </article>
           </div>
         </div>
@@ -547,7 +588,7 @@
     <section class="reviews" aria-labelledby="rev-title">
       <div class="container">
         <div class="sec-head reveal">
-          <h2 class="t-h1" id="rev-title">Loved by 5,000+ Homes,<br />Farms &amp; Businesses</h2>
+          <h2 class="t-h1" id="rev-title">Loved by 5,000+ Homes, <br />Farms &amp; Businesses</h2>
           <div class="score">
             <span class="t-stat-xl" data-count>4.9</span>
             <div class="score__meta"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-body-s c-secondary">Based on 1,200+ verified reviews</span></div>

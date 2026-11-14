@@ -22,12 +22,13 @@ After about a minute the site is live at `https://sazzuiux.github.io/sunvolt-web
 
 - **Savings calculator** — property type, monthly bill and roof-space sliders, sun exposure and add-ons update yearly savings, 25-year savings, payback, system size, CO₂ and the before/after bill bars live.
 - **Hero quick check** — ZIP + bill + property type pre-fills the calculator and scrolls to it.
+- **Service cards** — the hovered card expands to full size and the others shrink (tap on mobile).
 - **Case-study carousel** — auto-plays every 6 s with a progress dot. Pauses on hover; supports arrows, dots and swipe.
 - **FAQ accordion**, **lead form** (validation + thank-you state), **newsletter**, **mobile menu**, **sticky nav**.
 
 ## Animations
 
-- "Sunvolt Energy" watermark rises letter by letter out of the ocean (behind the turbines), then gently bobs like a wave.
+- "Sunvolt Energy" watermark is masked inside the sea (between horizon and coastline) and rises letter by letter out of the water, then bobs like a wave.
 - "Power Smarter, Live Greener." words blur in, with a lime underline drawing under "Greener."
 - Partner logos scroll in an endless marquee.
 - Every stat counts up when it scrolls into view.

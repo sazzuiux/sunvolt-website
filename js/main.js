@@ -87,6 +87,21 @@
   $$('[data-menu-close]').forEach((b) => b.addEventListener('click', () => { menu.classList.remove('is-open'); document.body.style.overflow = ''; }));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { menu.classList.remove('is-open'); document.body.style.overflow = ''; } });
 
+  /* ---------- 6b. Service accordion: hovered card expands, the others shrink ---------- */
+  const svcGrid = $('#svcGrid');
+  if (svcGrid) {
+    const cards = $$('.svc', svcGrid);
+    const activate = (card) => cards.forEach((c) => c.classList.toggle('is-active', c === card));
+    cards.forEach((card) => {
+      card.addEventListener('mouseenter', () => activate(card));
+      card.addEventListener('focus', () => activate(card));
+      // touch: first tap opens the card, second tap follows the link
+      card.addEventListener('click', (e) => {
+        if (!card.classList.contains('is-active')) { e.preventDefault(); activate(card); }
+      });
+    });
+  }
+
   /* ---------- 7. Savings calculator ---------- */
   const state = { type: 'home', bill: 250, area: 1200, sun: 'full', addons: new Set(['battery', 'ev']) };
   const SUN = { full: { offset: 0.88, yield: 2290 }, partial: { offset: 0.74, yield: 1830 }, shade: { offset: 0.52, yield: 1370 } };
