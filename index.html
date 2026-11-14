@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunvolt Energy — Solar, Wind, EV Charging &amp; Battery Storage</title>
+  <meta name="description" content="Sunvolt Energy designs and installs solar panels, wind turbines, EV chargers and battery storage. Estimate your savings in 60 seconds." />
+  <meta name="theme-color" content="#001617" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%23001617'/%3E%3Cg fill='none' stroke='%23D4F061' transform='translate(12 10) scale(.76)'%3E%3Ccircle cx='50' cy='60' r='33' stroke-width='11'/%3E%3Cpath d='M66 48H41a7 7 0 0 0 0 14h18a7 7 0 0 1 0 14H31' stroke-width='9' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/img/hero-bg.webp" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Icon sprite (24px line icons, stroke 1.75 — same set as the Figma "Icon/*" components) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="logo" viewBox="0 0 100 100"><g fill="none" stroke="currentColor"><circle cx="50" cy="60" r="33" stroke-width="11"/><path d="M66 48H41a7 7 0 0 0 0 14h18a7 7 0 0 1 0 14H31" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.52 35.40L4.40 29.24" stroke-width="7.5"/><path d="M29.34 21.15L24.18 11.44" stroke-width="7.5"/><path d="M50.00 16.00L50.00 5.00" stroke-width="7.5"/><path d="M70.66 21.15L75.82 11.44" stroke-width="7.5"/><path d="M86.48 35.40L95.60 29.24" stroke-width="7.5"/></g></symbol>
+      <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+      <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16"/><path d="M4 12h16"/><path d="M4 17h16"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+      <symbol id="i-wind" viewBox="0 0 24 24"><path d="M12.8 19.6A2 2 0 1 0 14 16H2"/><path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"/><path d="M9.8 4.4A2 2 0 1 1 11 8H2"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+      <symbol id="i-battery" viewBox="0 0 24 24"><path d="M15 7h1a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-2"/><path d="M6 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h1"/><path d="m11 7-3 5h4l-3 5"/><path d="M22 11v2"/></symbol>
+      <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol>
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/></symbol>
+      <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+      <symbol id="i-factory" viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></symbol>
+      <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+      <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+      <symbol id="i-trending-up" viewBox="0 0 24 24"><path d="M16 7h6v6"/><path d="m22 7-8.5 8.5-5-5L2 17"/></symbol>
+      <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-percent" viewBox="0 0 24 24"><path d="M19 5 5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+      <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z"/><path d="m14.5 12.5 2-2"/><path d="m11.5 9.5 2-2"/><path d="m8.5 6.5 2-2"/><path d="m17.5 15.5 2-2"/></symbol>
+      <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+      <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></symbol>
+      <symbol id="i-facebook" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></symbol>
+      <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+      <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+      <symbol id="i-quote" viewBox="0 0 24 24"><path d="M16 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/><path d="M5 3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2 1 1 0 0 1 1 1v1a2 2 0 0 1-2 2 1 1 0 0 0-1 1v2a1 1 0 0 0 1 1 6 6 0 0 0 6-6V5a2 2 0 0 0-2-2z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Sticky nav (appears after the hero) -->
+  <header class="sticky-nav" id="stickyNav" aria-hidden="true">
+    <a class="logo" href="#top" tabindex="-1"><svg class="logo__mark" style="color:var(--text-primary)"><use href="#logo"/></svg><span class="logo__text">Sunvolt Energy</span></a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#top" tabindex="-1">Home</a><a href="#about" tabindex="-1">About Us</a><a href="#services" tabindex="-1">Services</a><a href="#calculator" tabindex="-1">Calculator</a><a href="#projects" tabindex="-1">Projects</a><a href="#faq" tabindex="-1">FAQ</a><a href="#contact" tabindex="-1">Contact Us</a>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__phone" href="tel:+18005550198" tabindex="-1"><svg class="icon"><use href="#i-phone"/></svg>+1 800 555 0198</a>
+      <a class="btn btn--primary btn--sm" href="#contact" tabindex="-1">Get Started<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+      <button class="nav__burger" type="button" data-menu-open aria-label="Open menu" tabindex="-1"><svg class="icon"><use href="#i-menu"/></svg></button>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mmenu" id="mmenu" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="mmenu__top">
+      <a class="logo" href="#top" data-menu-close><svg class="logo__mark"><use href="#logo"/></svg><span class="logo__text">Sunvolt Energy</span></a>
+      <button class="nav__burger" type="button" data-menu-close aria-label="Close menu" style="display:grid"><svg class="icon"><use href="#i-x"/></svg></button>
+    </div>
+    <nav class="mmenu__links">
+      <a href="#top" data-menu-close style="--i:0">Home</a><a href="#about" data-menu-close style="--i:1">About Us</a><a href="#services" data-menu-close style="--i:2">Services</a><a href="#calculator" data-menu-close style="--i:3">Calculator</a><a href="#projects" data-menu-close style="--i:4">Projects</a><a href="#faq" data-menu-close style="--i:5">FAQ</a><a href="#contact" data-menu-close style="--i:6">Contact Us</a>
+    </nav>
+    <a class="btn btn--primary btn--block" href="#contact" data-menu-close>Get Free Consultation<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+  </div>
+
+  <main id="top">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-label="Introduction">
+      <div class="hero__card">
+        <img class="hero__img hero__bg" src="assets/img/hero-bg.webp" alt="" fetchpriority="high" />
+        <div class="hero__wm" aria-hidden="true"><span class="hero__wm-inner" data-split="Sunvolt Energy"></span></div>
+        <img class="hero__img hero__fg" src="assets/img/hero-foreground.webp" alt="Solar farm and wind turbines on a green hillside by the ocean" />
+        <div class="hero__shade-v"></div><div class="hero__shade-h"></div>
+
+        <div class="nav">
+          <a class="logo" href="#top" aria-label="Sunvolt Energy home"><svg class="logo__mark"><use href="#logo"/></svg><span class="logo__text">Sunvolt Energy</span></a>
+          <nav class="nav__links" aria-label="Primary">
+            <a href="#top" class="is-active">Home</a><a href="#about">About Us</a><a href="#services">Services</a><a href="#calculator">Calculator</a><a href="#projects">Projects</a><a href="#faq">FAQ</a><a href="#contact">Contact Us</a>
+          </nav>
+          <div class="nav__actions">
+            <a class="nav__phone" href="tel:+18005550198"><svg class="icon"><use href="#i-phone"/></svg>+1 800 555 0198</a>
+            <a class="btn btn--primary btn--sm" href="#contact">Get Started<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            <button class="nav__burger" type="button" data-menu-open aria-label="Open menu"><svg class="icon"><use href="#i-menu"/></svg></button>
+          </div>
+        </div>
+
+        <div class="hero__body">
+          <div class="hero__content">
+            <span class="pill pill--glass fade-up" style="--d:.2s">Trusted by 150+ homes, farms &amp; businesses</span>
+            <h1 class="hero__title" aria-label="Power Smarter, Live Greener.">
+              <span class="w" style="--i:0">Power</span> <span class="w" style="--i:1">Smarter,</span><br />
+              <span class="w" style="--i:2">Live</span> <span class="w w--accent" style="--i:3">Greener.</span>
+            </h1>
+            <p class="hero__sub t-body-l fade-up" style="--d:1s">Sunvolt Energy designs and installs reliable clean energy systems — from solar panels and wind turbines to EV charging and battery storage — helping you cut energy costs and build a more sustainable future.</p>
+            <div class="hero__ctas fade-up" style="--d:1.15s">
+              <a class="btn btn--primary" href="#contact">Request Free Consultation<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+              <a class="btn btn--glass" href="#services">Explore Our Services<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            </div>
+          </div>
+          <aside class="hero__stats fade-up" style="--d:1.3s" aria-label="Highlights">
+            <div class="hero__stats-row">
+              <div class="hero__stat"><span class="t-stat-l" data-count>5k+</span><span class="t-caption c-muted">Projects completed</span></div>
+              <div class="hero__stat"><span class="t-stat-l" data-count>35%</span><span class="t-caption c-muted">Avg. energy savings</span></div>
+            </div>
+            <div class="hero__divider"></div>
+            <div class="hero__award">
+              <span class="badge badge--44 badge--lime"><svg class="icon"><use href="#i-award"/></svg></span>
+              <div class="hero__award-text"><span class="t-label-m">Global Green Energy Awards</span><span class="t-caption c-muted">Best Residential Installer 2025</span></div>
+            </div>
+          </aside>
+        </div>
+
+        <form class="quick fade-up" style="--d:1.45s" id="quickForm" aria-label="Quick savings estimate">
+          <div class="quick__intro">
+            <div class="quick__intro-title"><svg class="icon"><use href="#i-zap"/></svg><span class="t-h5">Estimate your savings</span></div>
+            <span class="t-caption c-secondary">Free · 60 seconds · No obligation</span>
+          </div>
+          <label class="field field--zip"><span class="field__label">ZIP code</span><input class="field__control" name="zip" inputmode="numeric" maxlength="5" placeholder="e.g. 78701" /></label>
+          <label class="field field--bill"><span class="field__label">Monthly electric bill</span><span class="quick__input-wrap"><span class="prefix">$</span><input class="field__control has-prefix" name="bill" inputmode="numeric" placeholder="250" /></span></label>
+          <label class="field field--type"><span class="field__label">Property type</span><span class="field__select"><select class="field__control" name="type"><option value="home">Residential home</option><option value="farm">Farm</option><option value="business">Business</option><option value="industrial">Industrial</option></select><svg class="icon"><use href="#i-chevron-down"/></svg></span></label>
+          <button class="btn btn--dark" type="submit">Calculate My Savings<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ================= TRUST STRIP ================= -->
+    <section class="trust" aria-label="Partners">
+      <div class="container trust__inner">
+        <p class="trust__label">Certified &amp; trusted by leading<br />energy partners</p>
+        <div class="marquee">
+          <div class="marquee__track">
+            <div class="marquee__group">
+              <span class="partner"><svg class="icon"><use href="#i-sun"/></svg>HelioCore</span>
+              <span class="partner"><svg class="icon"><use href="#i-wind"/></svg>Nordwind</span>
+              <span class="partner"><svg class="icon"><use href="#i-zap"/></svg>VoltGrid</span>
+              <span class="partner"><svg class="icon"><use href="#i-battery"/></svg>TerraCell</span>
+              <span class="partner"><svg class="icon"><use href="#i-plug"/></svg>EcoCharge</span>
+              <span class="partner"><svg class="icon"><use href="#i-leaf"/></svg>GreenLeaf</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TRUSTED PERFORMANCE ================= -->
+    <section class="perf" aria-labelledby="perf-title">
+      <div class="container">
+        <div class="sec-head reveal">
+          <div class="sec-head__main">
+            <span class="pill pill--light">Why Sunvolt</span>
+            <h2 class="t-h1" id="perf-title">Trusted Energy,<br />Long-Term Performance.</h2>
+          </div>
+          <p class="sec-head__desc t-body-m c-secondary">From initial planning to final installation, Sunvolt Energy focuses on safety, efficiency and measurable energy results — so every system keeps paying you back for decades.</p>
+        </div>
+        <div class="bento">
+          <article class="bento__card bento__card--lime reveal">
+            <span class="badge badge--dark"><svg class="icon"><use href="#i-trending-up"/></svg></span>
+            <div class="bento__lime-text"><span class="t-stat-l" data-count>35%–80%</span><p class="t-body-s">Typical electricity cost reduction for our customers</p></div>
+          </article>
+          <article class="bento__card photo-card reveal" style="--d:.08s; --o:.7">
+            <img src="assets/img/stat-experience.webp" alt="Installer fitting a rooftop solar panel" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-shield"/></svg></span>
+            <div class="photo-card__content"><span class="t-stat-l" data-count>10+ Years</span><p class="t-body-s">Of expertise in renewable installation and maintenance</p></div>
+          </article>
+          <article class="bento__card bento__card--tall photo-card reveal" style="--d:.16s; --o:.54">
+            <img src="assets/img/stat-systems.webp" alt="Solar panels and wind turbines under a blue sky" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-sun"/></svg></span>
+            <div class="photo-card__content"><span class="t-stat-l" data-count>500+</span><p class="t-body-s">Clean energy systems installed for homes, farms, businesses and commercial properties</p></div>
+          </article>
+          <article class="bento__card bento__card--wide photo-card reveal" style="--d:.1s; --o:.64">
+            <img src="assets/img/stat-capacity.webp" alt="Young plant in front of solar panels and a wind turbine" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <span class="badge badge--44 badge--glass"><svg class="icon"><use href="#i-wind"/></svg></span>
+            <div class="photo-card__content"><span class="t-stat-l" data-count>8.5 MW+</span><p class="t-body-s">Renewable energy capacity delivered across homes, farms and commercial sites</p></div>
+          </article>
+        </div>
+        <a class="btn btn--primary reveal" href="#contact">Get Free Consultation<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container">
+        <div class="about__text reveal">
+          <h2 class="t-h2" id="about-title">We Make Clean Energy Simple, Practical, and Built to Last</h2>
+          <p class="t-body-m c-secondary">Sunvolt Energy is a renewable energy installation company helping homeowners, farms, commercial buildings and growing businesses transition to cleaner and more reliable energy systems.</p>
+          <p class="t-body-m c-secondary">Our team studies your site, energy usage, future needs and budget before recommending the right system — ensuring every installation delivers real, measurable results.</p>
+          <ul class="about__benefits">
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>Licensed, insured &amp; certified installers</li>
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>25-year performance warranty on every system</li>
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>Real-time monitoring app included</li>
+          </ul>
+          <div class="about__actions">
+            <a class="btn btn--dark" href="#how">Learn More About Us<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            <div class="rating"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-label-m">4.9/5 · 150+ reviews</span></div>
+          </div>
+        </div>
+        <div class="about__media reveal" style="--d:.12s">
+          <img class="about__main" src="assets/img/about-main.webp" alt="Technician installing a solar panel with a drill" loading="lazy" />
+          <img class="about__small" src="assets/img/about-small.webp" alt="Solar farm at sunset" loading="lazy" />
+          <div class="float-stat">
+            <span class="badge badge--44 badge--lime"><svg class="icon"><use href="#i-leaf"/></svg></span>
+            <div class="float-stat__text"><span class="t-h5" data-count>12,400+ tons</span><span class="t-caption c-secondary">CO₂ offset by our customers</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SAVINGS CALCULATOR ================= -->
+    <section class="calc" id="calculator" aria-labelledby="calc-title">
+      <div class="calc__card">
+        <div class="calc__head reveal">
+          <span class="pill pill--dark">Our Savings Calculator</span>
+          <h2 class="t-h1" id="calc-title">See How Much You Could Save<br />Before You Spend a Dollar</h2>
+          <p class="t-body-l">Answer 4 quick questions. We’ll estimate your yearly savings, payback period and the right system size for your property.</p>
+        </div>
+        <div class="calc__body">
+          <form class="calc__inputs reveal" id="calcForm" onsubmit="return false">
+            <div class="calc__group">
+              <div class="calc__step"><span class="calc__step-num">1</span><span class="t-h5">What type of property is it?</span></div>
+              <div class="chips" role="radiogroup" aria-label="Property type">
+                <button type="button" class="chip" role="radio" aria-checked="true" data-type="home"><svg class="icon"><use href="#i-home"/></svg>Home</button>
+                <button type="button" class="chip" role="radio" aria-checked="false" data-type="farm"><svg class="icon"><use href="#i-sprout"/></svg>Farm</button>
+                <button type="button" class="chip" role="radio" aria-checked="false" data-type="business"><svg class="icon"><use href="#i-building"/></svg>Business</button>
+                <button type="button" class="chip" role="radio" aria-checked="false" data-type="industrial"><svg class="icon"><use href="#i-factory"/></svg>Industrial</button>
+              </div>
+            </div>
+            <div class="calc__group calc__group--usage">
+              <div class="calc__step"><span class="calc__step-num">2</span><span class="t-h5">Tell us about your energy use</span></div>
+              <div class="slider">
+                <div class="slider__top"><label class="t-label-m c-muted" for="bill">Average monthly electricity bill</label><output class="slider__value" id="billOut" for="bill">$250</output></div>
+                <input class="range" type="range" id="bill" min="50" max="1000" step="10" value="250" />
+                <div class="slider__range t-caption"><span>$50</span><span>$1,000+</span></div>
+              </div>
+              <div class="slider">
+                <div class="slider__top"><label class="t-label-m c-muted" for="area">Available roof / land space</label><output class="slider__value" id="areaOut" for="area">1,200 sq ft</output></div>
+                <input class="range" type="range" id="area" min="200" max="10000" step="100" value="1200" />
+                <div class="slider__range t-caption"><span>200 sq ft</span><span>10,000+ sq ft</span></div>
+              </div>
+            </div>
+            <div class="calc__group">
+              <div class="calc__step"><span class="calc__step-num">3</span><span class="t-h5">Where is the property?</span></div>
+              <div class="calc__row">
+                <label class="field field--dark"><span class="field__label">ZIP code</span><input class="field__control" id="zip" inputmode="numeric" maxlength="5" placeholder="78701" /></label>
+                <label class="field field--dark"><span class="field__label">Sun exposure</span><span class="field__select"><select class="field__control" id="sun"><option value="full">Full sun most of the day</option><option value="partial">Partial shade</option><option value="shade">Mostly shaded</option></select><svg class="icon"><use href="#i-chevron-down"/></svg></span></label>
+              </div>
+            </div>
+            <div class="calc__group">
+              <div class="calc__step"><span class="calc__step-num">4</span><span class="t-h5">Add-ons you’re interested in</span></div>
+              <div class="toggles">
+                <button type="button" class="toggle" aria-pressed="true" data-addon="battery"><svg class="icon icon--check"><use href="#i-check"/></svg><svg class="icon icon--plus"><use href="#i-plus"/></svg>Battery backup</button>
+                <button type="button" class="toggle" aria-pressed="true" data-addon="ev"><svg class="icon icon--check"><use href="#i-check"/></svg><svg class="icon icon--plus"><use href="#i-plus"/></svg>EV charger</button>
+                <button type="button" class="toggle" aria-pressed="false" data-addon="wind"><svg class="icon icon--check"><use href="#i-check"/></svg><svg class="icon icon--plus"><use href="#i-plus"/></svg>Wind turbine</button>
+                <button type="button" class="toggle" aria-pressed="false" data-addon="monitoring"><svg class="icon icon--check"><use href="#i-check"/></svg><svg class="icon icon--plus"><use href="#i-plus"/></svg>Smart monitoring</button>
+              </div>
+            </div>
+          </form>
+
+          <div class="calc__result reveal" style="--d:.1s" aria-live="polite">
+            <div class="calc__result-top"><span class="t-label-l">Your estimated savings</span><span class="live">Live estimate</span></div>
+            <div>
+              <div class="calc__amount"><span class="calc__amount-value" id="rYear">$2,640</span><span class="t-h4">/ year</span></div>
+              <p class="t-body-m" id="rSub">≈ $220 saved every month · 88% of your bill offset</p>
+            </div>
+            <div class="calc__metrics">
+              <div class="metric"><svg class="icon"><use href="#i-trending-up"/></svg><div class="metric__text"><span class="t-h5 metric__value" id="r25">$78,400</span><span class="t-caption c-secondary">25-year savings</span></div></div>
+              <div class="metric"><svg class="icon"><use href="#i-clock"/></svg><div class="metric__text"><span class="t-h5 metric__value" id="rPayback">6.2 years</span><span class="t-caption c-secondary">Payback period</span></div></div>
+              <div class="metric"><svg class="icon"><use href="#i-sun"/></svg><div class="metric__text"><span class="t-h5 metric__value" id="rSystem">7.2 kW · 18 panels</span><span class="t-caption c-secondary">Recommended system</span></div></div>
+              <div class="metric"><svg class="icon"><use href="#i-leaf"/></svg><div class="metric__text"><span class="t-h5 metric__value" id="rCo2">5.1 tons / year</span><span class="t-caption c-secondary">CO₂ offset</span></div></div>
+            </div>
+            <div class="bars">
+              <span class="t-label-m">Monthly bill — before vs. after</span>
+              <div class="bars__row"><span class="t-caption bars__label">Before</span><div class="bars__track"><div class="bars__bar bars__bar--before"></div></div><span class="bars__value" id="rBefore">$250</span></div>
+              <div class="bars__row"><span class="t-caption bars__label">After</span><div class="bars__track"><div class="bars__bar bars__bar--after" id="rAfterBar"></div></div><span class="bars__value" id="rAfter">$30</span></div>
+            </div>
+            <a class="btn btn--dark btn--block" href="#contact" id="quoteBtn">Get My Detailed Quote<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            <p class="t-caption">Includes the 30% federal tax credit. Estimates are based on local sun hours and utility rates — your free site visit confirms the final numbers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= HOW IT WORKS ================= -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <div class="sec-head--center sec-head reveal">
+          <span class="pill pill--light">How It Works</span>
+          <h2 class="t-h1" id="how-title">Your Clean Energy Journey<br />in 3 Simple Steps</h2>
+        </div>
+        <div class="steps">
+          <article class="step photo-card reveal" style="--o:.48">
+            <img src="assets/img/step-1.webp" alt="Two engineers talking near a wind turbine" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <div class="step__content"><span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-clipboard"/></svg></span><h3 class="t-h4">1. Energy Assessment</h3><p class="t-body-s">We review your energy usage, site conditions, equipment needs and future energy goals.</p></div>
+          </article>
+          <article class="step photo-card reveal" style="--d:.1s; --o:.64">
+            <img src="assets/img/step-2.webp" alt="Hands holding a blueprint of a house" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <div class="step__content"><span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-ruler"/></svg></span><h3 class="t-h4">2. Custom System Design</h3><p class="t-body-s">We design the right combination of solar, wind, battery storage or EV charging for your property.</p></div>
+          </article>
+          <article class="step photo-card reveal" style="--d:.2s; --o:.58">
+            <img src="assets/img/step-3.webp" alt="Solar panels and a monitoring dashboard" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <div class="step__content"><span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-wrench"/></svg></span><h3 class="t-h4">3. Install, Monitor &amp; Save</h3><p class="t-body-s">Our team installs the system safely, connects it properly and helps you track clean-energy savings.</p></div>
+          </article>
+        </div>
+        <a class="btn btn--primary reveal" href="#calculator">Start Your Energy Assessment<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+      </div>
+    </section>
+
+    <!-- ================= SERVICES ================= -->
+    <section class="services" id="services" aria-labelledby="svc-title">
+      <div class="container">
+        <div class="sec-head reveal">
+          <div class="sec-head__main"><span class="pill pill--dark">Our Services</span><h2 class="t-h1" id="svc-title">Complete Renewable Energy<br />Installation Services</h2></div>
+          <p class="sec-head__desc t-body-m">Sunvolt Energy provides clean energy solutions for homes, commercial properties and modern infrastructure projects — one team from design to maintenance.</p>
+        </div>
+        <div class="svc-grid">
+          <a class="svc svc--featured reveal" href="#contact">
+            <div class="svc__media photo-card">
+              <img src="assets/img/service-solar.webp" alt="Installer mounting solar panels on a roof" loading="lazy" />
+              <div class="photo-card__shade"></div>
+              <span class="badge badge--52 badge--lime"><svg class="icon"><use href="#i-sun"/></svg></span>
+              <div class="svc__details">
+                <h3 class="t-h4">Solar Panel Installation</h3>
+                <p class="t-body-s c-muted">We design and install efficient solar systems for homes, farms and businesses — lowering bills, cutting emissions and adding long-term value.</p>
+                <span class="t-label-m c-brand">Best for</span>
+                <div class="tags"><span class="tag">Homes</span><span class="tag">Farms</span><span class="tag">Warehouses</span><span class="tag">Offices</span><span class="tag">Retail</span><span class="tag">Schools</span></div>
+              </div>
+            </div>
+            <div class="svc__label"><span class="t-label-l">Solar Panel Installation</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
+          </a>
+          <a class="svc reveal" style="--d:.08s" href="#contact">
+            <div class="svc__media photo-card"><img src="assets/img/service-wind.webp" alt="Engineers climbing a wind turbine stair" loading="lazy" /></div>
+            <div class="svc__label"><span class="t-label-l">Wind Turbine Installation</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
+          </a>
+          <a class="svc reveal" style="--d:.16s" href="#contact">
+            <div class="svc__media photo-card"><img src="assets/img/service-ev.webp" alt="EV charging station next to a car" loading="lazy" /></div>
+            <div class="svc__label"><span class="t-label-l">EV Charging Station</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
+          </a>
+          <a class="svc reveal" style="--d:.24s" href="#contact">
+            <div class="svc__media photo-card"><img src="assets/img/service-storage.webp" alt="Technician at a battery storage unit" loading="lazy" /></div>
+            <div class="svc__label"><span class="t-label-l">Energy Storage</span><span class="svc__arrow"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></div>
+          </a>
+        </div>
+        <div class="services__foot reveal">
+          <p class="t-body-l">Not sure which service fits? Get a free recommendation in 24 hours.</p>
+          <a class="btn btn--primary" href="#contact">Talk to an Energy Expert<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INSTALLATION PROCESS ================= -->
+    <section class="process" aria-labelledby="process-title">
+      <div class="container">
+        <div class="sec-head sec-head--center reveal">
+          <span class="pill pill--light">Installation Process</span>
+          <h2 class="t-h1" id="process-title">From Site Visit to Clean Power —<br />We Handle Everything</h2>
+          <p class="t-body-l c-secondary">Most projects go live in 4–8 weeks. You get one dedicated project manager from day one.</p>
+        </div>
+        <div class="pbento">
+          <article class="pcard pcard--tall reveal">
+            <img src="assets/img/process-1.webp" alt="Engineer inspecting a rooftop solar installation" loading="lazy" />
+            <div class="pcard__body">
+              <div class="pcard__text">
+                <div class="meta meta--light"><span class="meta__step">Step 01</span><span class="meta__dur"><svg class="icon"><use href="#i-clock"/></svg>1 Week</span></div>
+                <h3 class="t-h3">Site Assessment</h3>
+                <p class="t-body-s c-secondary">We review your property, energy usage, roof or land space, electrical setup and clean energy goals to understand what system fits best.</p>
+              </div>
+              <a class="btn btn--dark btn--sm" href="#contact">Book a Free Site Visit<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            </div>
+          </article>
+          <article class="pcard pcard--image reveal" style="--d:.08s">
+            <img src="assets/img/process-2.webp" alt="Solar panels on a commercial roof" loading="lazy" />
+            <div class="photo-card__shade"></div>
+            <div class="pcard__overlay">
+              <div class="meta meta--dark"><span class="meta__step">Step 02</span><span class="meta__dur"><svg class="icon"><use href="#i-clock"/></svg>1–2 Weeks</span></div>
+              <h3 class="t-h4">System Design &amp; Proposal</h3>
+              <p class="t-body-s">A clear proposal with system type, capacity, estimated savings and timeline.</p>
+            </div>
+            <span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-ruler"/></svg></span>
+          </article>
+          <article class="pcard pcard--lime reveal" style="--d:.16s">
+            <div class="pcard__top">
+              <div class="meta meta--lime"><span class="meta__step">Step 03</span><span class="meta__dur"><svg class="icon"><use href="#i-clock"/></svg>Install</span></div>
+              <span class="badge badge--dark"><svg class="icon"><use href="#i-wrench"/></svg></span>
+            </div>
+            <div class="pcard__big">
+              <div class="pcard__big-num"><span class="t-stat-xl" data-count>2–4</span><span class="t-h4">weeks</span></div>
+              <span class="t-h5">Permits &amp; Installation</span>
+              <p class="t-body-s">We handle planning &amp; paperwork, then install panels, turbines, chargers or storage safely.</p>
+            </div>
+          </article>
+          <article class="pcard pcard--wide reveal" style="--d:.1s">
+            <div class="pcard__copy">
+              <div class="meta meta--dark"><span class="meta__step">Step 04</span><span class="meta__dur"><svg class="icon"><use href="#i-clock"/></svg>Ongoing</span></div>
+              <h3 class="t-h3">Testing &amp; Ongoing Support</h3>
+              <p class="t-body-s">We test the full system, enable remote monitoring and stay with you for maintenance — long after handover.</p>
+              <div class="mini-checks">
+                <span class="mini-check"><span><svg class="icon"><use href="#i-check"/></svg></span>24/7 monitoring</span>
+                <span class="mini-check"><span><svg class="icon"><use href="#i-check"/></svg></span>25-yr warranty</span>
+              </div>
+            </div>
+            <img src="assets/img/process-4.webp" alt="Technician testing solar panel output with a multimeter" loading="lazy" />
+          </article>
+        </div>
+        <div class="process__foot reveal">
+          <p class="process__foot-text t-body-m"><svg class="icon"><use href="#i-shield"/></svg>From first visit to clean power in 4–8 weeks — one dedicated project manager, zero paperwork for you.</p>
+          <a class="btn btn--primary" href="#contact">Start Your Project<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINANCING ================= -->
+    <section class="finance" aria-labelledby="fin-title">
+      <div class="container">
+        <div class="finance__text reveal">
+          <h2 class="t-h2" id="fin-title">Go Solar for $0<br />Down — Let Incentives Do the Heavy Lifting</h2>
+          <p class="t-body-m c-secondary">Between federal tax credits, local rebates and flexible financing, most of our customers start saving from the very first month — without a large upfront investment.</p>
+          <ul class="finance__checks">
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>We file all rebate &amp; tax credit paperwork for you</li>
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>Monthly payment often lower than your current bill</li>
+            <li class="check"><span class="check__dot"><svg class="icon"><use href="#i-check"/></svg></span>Own your system — no lease, no hidden fees</li>
+          </ul>
+          <div class="finance__btns">
+            <a class="btn btn--dark" href="#calculator">Check My Eligibility<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+            <a class="btn btn--outline" href="#contact">View Financing Plans</a>
+          </div>
+        </div>
+        <div class="offers">
+          <article class="offer offer--lime reveal"><span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-percent"/></svg></span><div class="offer__text"><span class="t-stat-l offer__value" data-count>30%</span><span class="t-h5">Federal tax credit</span><p class="t-body-s">Claim back 30% of your total system cost on your taxes.</p></div></article>
+          <article class="offer offer--dark reveal" style="--d:.08s"><span class="badge badge--44 badge--lime"><svg class="icon"><use href="#i-dollar"/></svg></span><div class="offer__text"><span class="t-stat-l offer__value">$0</span><span class="t-h5">Down payment</span><p class="t-body-s">Flexible plans from $89/month with approved credit.</p></div></article>
+          <article class="offer offer--soft reveal" style="--d:.12s"><span class="badge badge--44 badge--lime"><svg class="icon"><use href="#i-shield"/></svg></span><div class="offer__text"><span class="t-stat-l offer__value" data-count>25 yrs</span><span class="t-h5">Performance warranty</span><p class="t-body-s">Panels, inverter and workmanship — fully covered.</p></div></article>
+          <article class="offer offer--soft reveal" style="--d:.2s"><span class="badge badge--44 badge--lime"><svg class="icon"><use href="#i-zap"/></svg></span><div class="offer__text"><span class="t-stat-l offer__value" data-count>100%</span><span class="t-h5">Net metering credits</span><p class="t-body-s">Sell surplus power back to the grid and earn credits.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CASE STUDIES (auto carousel) ================= -->
+    <section class="cases" id="projects" aria-labelledby="cases-title">
+      <div class="container">
+        <div class="sec-head reveal">
+          <div class="sec-head__main"><span class="pill pill--light">Customer Results</span><h2 class="t-h1" id="cases-title">Real Energy Projects.<br />Real Performance Results.</h2></div>
+          <div class="cases__nav">
+            <button class="round-btn round-btn--outline" type="button" data-prev aria-label="Previous project"><svg class="icon"><use href="#i-arrow-left"/></svg></button>
+            <button class="round-btn round-btn--dark" type="button" data-next aria-label="Next project"><svg class="icon"><use href="#i-arrow-right"/></svg></button>
+          </div>
+        </div>
+
+        <div class="carousel reveal" aria-roledescription="carousel">
+          <div class="carousel__track">
+            <!-- Slide 1 -->
+            <article class="slide" aria-roledescription="slide" aria-label="1 of 3">
+              <div class="slide__details">
+                <div class="slide__title-row"><h3 class="t-h3">Farm Solar System</h3><span class="loc"><svg class="icon"><use href="#i-map-pin"/></svg>Bakersfield, CA</span></div>
+                <p class="t-body-l c-secondary">“Sunvolt helped us power our irrigation pumps and reduce our daytime electricity usage. The system has made our farm operations more predictable and cost-efficient.”</p>
+                <div class="author-row">
+                  <div class="author"><img src="assets/img/avatar-michael.webp" alt="" /><div class="author__text"><span class="t-label-l">Michael Turner</span><span class="t-caption c-secondary">Farm Operations Manager · Green Valley Farms</span></div></div>
+                  <div class="rating"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-label-m">5.0</span></div>
+                </div>
+                <div class="sys"><span class="t-label-l">Installed system</span><div class="sys__chips"><span class="sys__chip"><svg class="icon"><use href="#i-sun"/></svg>42 kW solar panel system</span><span class="sys__chip"><svg class="icon"><use href="#i-zap"/></svg>Hybrid inverter setup</span><span class="sys__chip"><svg class="icon"><use href="#i-battery"/></svg>Battery backup for pumps</span><span class="sys__chip"><svg class="icon"><use href="#i-activity"/></svg>Smart energy monitoring</span></div></div>
+                <div class="results"><span class="t-label-l">Result</span>
+                  <div class="results__row"><span class="t-body-s c-secondary">Monthly electricity reduction</span><span class="t-label-m" data-count>68%</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Estimated monthly savings</span><span class="t-label-m" data-count>$1,850</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Annual energy generated</span><span class="t-label-m" data-count>61,000 kWh</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">CO₂ offset</span><span class="t-label-m" data-count>42 tons / year</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Payback estimate</span><span class="t-label-m" data-count>5.8 years</span></div>
+                </div>
+                <a class="btn btn--primary" href="#contact">View Project Details<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+              </div>
+              <div class="slide__media"><img src="assets/img/case-farm.webp" alt="Tractor working between vertical solar panels on a farm" loading="lazy" /></div>
+            </article>
+            <!-- Slide 2 -->
+            <article class="slide" aria-roledescription="slide" aria-label="2 of 3">
+              <div class="slide__details">
+                <div class="slide__title-row"><h3 class="t-h3">Warehouse Solar + Storage</h3><span class="loc"><svg class="icon"><use href="#i-map-pin"/></svg>Austin, TX</span></div>
+                <p class="t-body-l c-secondary">“Sunvolt’s rooftop array and battery bank cut our peak-demand charges in half. During the last two grid outages our loading docks never stopped.”</p>
+                <div class="author-row">
+                  <div class="author"><img src="assets/img/avatar-david.webp" alt="" /><div class="author__text"><span class="t-label-l">David Chen</span><span class="t-caption c-secondary">Operations Lead · Northline Logistics</span></div></div>
+                  <div class="rating"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-label-m">5.0</span></div>
+                </div>
+                <div class="sys"><span class="t-label-l">Installed system</span><div class="sys__chips"><span class="sys__chip"><svg class="icon"><use href="#i-sun"/></svg>180 kW rooftop solar</span><span class="sys__chip"><svg class="icon"><use href="#i-battery"/></svg>400 kWh battery storage</span><span class="sys__chip"><svg class="icon"><use href="#i-plug"/></svg>6 fleet EV chargers</span><span class="sys__chip"><svg class="icon"><use href="#i-activity"/></svg>Peak-shaving controls</span></div></div>
+                <div class="results"><span class="t-label-l">Result</span>
+                  <div class="results__row"><span class="t-body-s c-secondary">Monthly electricity reduction</span><span class="t-label-m" data-count>54%</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Estimated monthly savings</span><span class="t-label-m" data-count>$6,400</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Annual energy generated</span><span class="t-label-m" data-count>252,000 kWh</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">CO₂ offset</span><span class="t-label-m" data-count>175 tons / year</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Payback estimate</span><span class="t-label-m" data-count>6.1 years</span></div>
+                </div>
+                <a class="btn btn--primary" href="#contact">View Project Details<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+              </div>
+              <div class="slide__media"><span class="ph"><svg class="icon"><use href="#i-image"/></svg>Warehouse rooftop solar array</span></div>
+            </article>
+            <!-- Slide 3 -->
+            <article class="slide" aria-roledescription="slide" aria-label="3 of 3">
+              <div class="slide__details">
+                <div class="slide__title-row"><h3 class="t-h3">Home Solar + EV Charging</h3><span class="loc"><svg class="icon"><use href="#i-map-pin"/></svg>Phoenix, AZ</span></div>
+                <p class="t-body-l c-secondary">“Our power bill went from $290 to almost nothing, and I charge my EV in the garage on sunshine. The install took one day and the app shows everything.”</p>
+                <div class="author-row">
+                  <div class="author"><img src="assets/img/avatar-sarah.webp" alt="" /><div class="author__text"><span class="t-label-l">Sarah Mitchell</span><span class="t-caption c-secondary">Homeowner · Arcadia, Phoenix</span></div></div>
+                  <div class="rating"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-label-m">5.0</span></div>
+                </div>
+                <div class="sys"><span class="t-label-l">Installed system</span><div class="sys__chips"><span class="sys__chip"><svg class="icon"><use href="#i-sun"/></svg>9.6 kW rooftop solar</span><span class="sys__chip"><svg class="icon"><use href="#i-battery"/></svg>13.5 kWh home battery</span><span class="sys__chip"><svg class="icon"><use href="#i-plug"/></svg>Level 2 EV charger</span><span class="sys__chip"><svg class="icon"><use href="#i-activity"/></svg>Smart monitoring app</span></div></div>
+                <div class="results"><span class="t-label-l">Result</span>
+                  <div class="results__row"><span class="t-body-s c-secondary">Monthly electricity reduction</span><span class="t-label-m" data-count>92%</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Estimated monthly savings</span><span class="t-label-m" data-count>$265</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Annual energy generated</span><span class="t-label-m" data-count>14,800 kWh</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">CO₂ offset</span><span class="t-label-m" data-count>10 tons / year</span></div>
+                  <div class="results__row"><span class="t-body-s c-secondary">Payback estimate</span><span class="t-label-m" data-count>7.4 years</span></div>
+                </div>
+                <a class="btn btn--primary" href="#contact">View Project Details<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></a>
+              </div>
+              <div class="slide__media"><span class="ph"><svg class="icon"><use href="#i-image"/></svg>Home roof solar with EV in driveway</span></div>
+            </article>
+          </div>
+        </div>
+        <div class="dots" role="tablist" aria-label="Choose project"></div>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="reviews" aria-labelledby="rev-title">
+      <div class="container">
+        <div class="sec-head reveal">
+          <h2 class="t-h1" id="rev-title">Loved by 5,000+ Homes,<br />Farms &amp; Businesses</h2>
+          <div class="score">
+            <span class="t-stat-xl" data-count>4.9</span>
+            <div class="score__meta"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><span class="t-body-s c-secondary">Based on 1,200+ verified reviews</span></div>
+          </div>
+        </div>
+        <div class="review-grid">
+          <article class="review reveal">
+            <div class="review__top"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><svg class="icon icon--fill icon--quote"><use href="#i-quote"/></svg></div>
+            <p class="t-body-l review__quote">“Our electric bill dropped by 62% in the first month. The Sunvolt team handled permits, install and monitoring — completely stress-free.”</p>
+            <hr />
+            <div class="author"><img src="assets/img/avatar-sarah.webp" alt="" /><div class="author__text"><span class="t-label-l">Sarah Mitchell</span><span class="t-caption c-secondary">Homeowner · Austin, TX</span></div></div>
+          </article>
+          <article class="review reveal" style="--d:.08s">
+            <div class="review__top"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><svg class="icon icon--fill icon--quote"><use href="#i-quote"/></svg></div>
+            <p class="t-body-l review__quote">“They designed a hybrid solar + battery setup for our warehouse. Zero downtime during the last two grid outages and the payback is ahead of schedule.”</p>
+            <hr />
+            <div class="author"><img src="assets/img/avatar-david.webp" alt="" /><div class="author__text"><span class="t-label-l">David Chen</span><span class="t-caption c-secondary">Operations Lead · Northline Logistics</span></div></div>
+          </article>
+          <article class="review reveal" style="--d:.16s">
+            <div class="review__top"><span class="stars"><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg><svg class="icon icon--fill"><use href="#i-star"/></svg></span><svg class="icon icon--fill icon--quote"><use href="#i-quote"/></svg></div>
+            <p class="t-body-l review__quote">“The savings calculator was spot on. From the first call to switching on the EV chargers took just five weeks. Super professional crew.”</p>
+            <hr />
+            <div class="author"><img src="assets/img/avatar-priya.webp" alt="" /><div class="author__text"><span class="t-label-l">Priya Raman</span><span class="t-caption c-secondary">Owner · Greenway Café</span></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="faq__left reveal">
+          <div class="faq__intro"><h2 class="t-h1" id="faq-title">Frequently Asked Questions</h2><p class="t-body-m c-secondary">Everything you need to know before switching to clean energy.</p></div>
+          <div class="faq__art"><img src="assets/img/faq-illustration.webp" alt="Wind turbine, solar panel and EV charger" loading="lazy" /></div>
+          <a class="faq__help" href="#contact">
+            <span class="badge badge--lime"><svg class="icon"><use href="#i-message"/></svg></span>
+            <span class="faq__help-text"><span class="t-label-l">Still have questions?</span><span class="t-caption c-muted">Talk to an energy expert — Mon–Sat, 8am–8pm</span></span>
+          </a>
+        </div>
+        <div class="faq__list" id="faqList"></div>
+      </div>
+    </section>
+
+    <!-- ================= CTA + LEAD FORM ================= -->
+    <section class="cta" id="contact" aria-labelledby="cta-title">
+      <div class="cta__card">
+        <div class="cta__inner">
+          <div class="cta__text reveal">
+            <span class="pill pill--light">Free Consultation</span>
+            <h2 class="t-display" id="cta-title">Ready to Build a Smarter Energy Future?</h2>
+            <p class="t-body-l">Start with a free energy audit. We’ll recommend the right solar, wind, battery or EV charging setup for your property — with clear pricing and no pressure.</p>
+            <div class="contacts">
+              <a class="contact" href="tel:+18005550198"><span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-phone"/></svg></span><span class="contact__text"><span class="t-caption">Call us</span><span class="t-label-l">+1 800 555 0198</span></span></a>
+              <a class="contact" href="mailto:hello@sunvolt.energy"><span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-mail"/></svg></span><span class="contact__text"><span class="t-caption">Email</span><span class="t-label-l">hello@sunvolt.energy</span></span></a>
+              <div class="contact"><span class="badge badge--44 badge--dark"><svg class="icon"><use href="#i-clock"/></svg></span><span class="contact__text"><span class="t-caption">Response time</span><span class="t-label-l">Within 24 hours</span></span></div>
+            </div>
+          </div>
+          <form class="lead reveal" style="--d:.1s" id="leadForm" novalidate>
+            <div class="lead__head"><h3 class="t-h3">Book your free consultation</h3><p class="t-body-s c-secondary">Takes less than a minute. No spam, ever.</p></div>
+            <div class="lead__row">
+              <label class="field"><span class="field__label">Full name</span><input class="field__control" name="name" required autocomplete="name" placeholder="e.g. Michael Turner" /></label>
+              <label class="field"><span class="field__label">Phone number</span><input class="field__control" name="phone" type="tel" required autocomplete="tel" placeholder="+1 (555) 000-0000" /></label>
+            </div>
+            <div class="lead__row">
+              <label class="field"><span class="field__label">Email address</span><input class="field__control" name="email" type="email" required autocomplete="email" placeholder="you@email.com" /></label>
+              <label class="field"><span class="field__label">ZIP code</span><input class="field__control" name="zip" inputmode="numeric" maxlength="5" placeholder="78701" /></label>
+            </div>
+            <div class="lead__row">
+              <label class="field"><span class="field__label">Property type</span><span class="field__select"><select class="field__control" name="type"><option>Residential home</option><option>Farm</option><option>Business</option><option>Industrial</option></select><svg class="icon"><use href="#i-chevron-down"/></svg></span></label>
+              <label class="field"><span class="field__label">Interested in</span><span class="field__select"><select class="field__control" name="interest"><option>Solar + battery</option><option>Solar panels</option><option>Wind turbine</option><option>EV charging</option><option>Battery storage</option></select><svg class="icon"><use href="#i-chevron-down"/></svg></span></label>
+            </div>
+            <label class="field"><span class="field__label">Message (optional)</span><textarea class="field__control" name="message" placeholder="Tell us about your property or energy goals…"></textarea></label>
+            <label class="consent"><input type="checkbox" checked /><span class="consent__box"><svg class="icon"><use href="#i-check"/></svg></span><span class="t-body-s c-secondary">Send me my free savings report by email</span></label>
+            <button class="btn btn--dark btn--block" type="submit">Get My Free Quote<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></button>
+            <div class="lead__trust t-caption c-secondary"><span><svg class="icon"><use href="#i-shield"/></svg>Licensed &amp; insured</span><span><svg class="icon"><use href="#i-award"/></svg>Award-winning</span><span><svg class="icon icon--fill"><use href="#i-star"/></svg>4.9 rating</span></div>
+            <div class="lead__success" role="status">
+              <span class="badge badge--lime"><svg class="icon"><use href="#i-check"/></svg></span>
+              <h3 class="t-h3">Thank you! You’re all set.</h3>
+              <p class="t-body-m c-secondary">An energy expert will call you within 24 hours with your personalised savings report.</p>
+              <button class="btn btn--primary" type="button" data-reset>Send another request<span class="btn__circle"><svg class="icon"><use href="#i-arrow-up-right"/></svg></span></button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__cols">
+        <div class="footer__brand">
+          <a class="logo" href="#top"><svg class="logo__mark"><use href="#logo"/></svg><span class="logo__text">Sunvolt Energy</span></a>
+          <p class="t-body-s c-muted">Clean energy installation solutions for solar panels, wind turbines, EV charging stations and energy storage systems.</p>
+          <span class="t-label-m">Follow us</span>
+          <div class="socials">
+            <a class="social" href="#" aria-label="Facebook"><svg class="icon"><use href="#i-facebook"/></svg></a>
+            <a class="social" href="#" aria-label="Instagram"><svg class="icon"><use href="#i-instagram"/></svg></a>
+            <a class="social" href="#" aria-label="LinkedIn"><svg class="icon"><use href="#i-linkedin"/></svg></a>
+            <a class="social" href="#" aria-label="YouTube"><svg class="icon"><use href="#i-youtube"/></svg></a>
+          </div>
+        </div>
+        <div class="footer__col"><span class="t-label-l">Company</span><a href="#about">About Us</a><a href="#how">How It Works</a><a href="#projects">Projects</a><a href="#">Careers</a><a href="#contact">Contact Us</a></div>
+        <div class="footer__col"><span class="t-label-l">Services</span><a href="#services">Solar Panel Installation</a><a href="#services">Wind Turbine Installation</a><a href="#services">EV Charging Station</a><a href="#services">Energy Storage</a><a href="#services">Maintenance</a></div>
+        <div class="footer__col"><span class="t-label-l">Support</span><a href="#faq">FAQ</a><a href="#calculator">Savings Calculator</a><a href="#contact">Financing</a><a href="#faq">Warranty</a><a href="#contact">Customer Support</a></div>
+        <div class="news">
+          <span class="t-label-l">Newsletter</span>
+          <p class="t-body-s c-muted">Get clean energy tips, rebate updates and project insights.</p>
+          <form class="news__form" id="newsForm"><input type="email" placeholder="Enter your email" aria-label="Email" required /><button class="btn btn--primary btn--sm btn--no-icon" type="submit">Subscribe</button></form>
+          <a class="news__line" href="tel:+18005550198"><svg class="icon"><use href="#i-phone"/></svg>+1 800 555 0198</a>
+          <a class="news__line" href="mailto:hello@sunvolt.energy"><svg class="icon"><use href="#i-mail"/></svg>hello@sunvolt.energy</a>
+          <span class="news__line"><svg class="icon"><use href="#i-map-pin"/></svg>Austin, Texas, USA</span>
+        </div>
+      </div>
+      <div class="footer__bottom t-caption">
+        <span>© 2026 Sunvolt Energy. All rights reserved.</span>
+        <nav><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Sitemap</a></nav>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating chat CTA -->
+  <a class="chat" id="chat" href="#contact" aria-label="Chat with an expert">
+    <span class="badge badge--40 badge--lime chat__badge"><svg class="icon" style="width:20px;height:20px"><use href="#i-message"/></svg><span class="chat__dot"></span></span>
+    <span class="chat__text"><span class="t-label-m">Chat with an expert</span><span class="t-caption c-muted">Typically replies in 2 min</span></span>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
