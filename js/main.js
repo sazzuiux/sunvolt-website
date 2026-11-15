@@ -102,6 +102,63 @@
     });
   }
 
+  /* ---------- 6c. Brand dropdowns (progressively enhance every .field__select) ---------- */
+  let ddId = 0;
+  const closeAllDd = (except) => $$('.dd.is-open').forEach((d) => d !== except && d.__close());
+  $$('.field__select').forEach((wrap) => {
+    const select = $('select', wrap);
+    const chevron = $('svg', wrap);
+    const id = 'dd-' + ddId++;
+    wrap.classList.add('dd');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'field__control dd__btn';
+    btn.setAttribute('aria-haspopup', 'listbox');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', id);
+    const label = document.createElement('span');
+    btn.append(label, chevron);
+    const list = document.createElement('ul');
+    list.className = 'dd__list'; list.id = id; list.setAttribute('role', 'listbox'); list.tabIndex = -1;
+    const opts = [...select.options].map((o, i) => {
+      const li = document.createElement('li');
+      li.className = 'dd__opt'; li.setAttribute('role', 'option'); li.dataset.i = i;
+      li.innerHTML = `<span>${o.textContent}</span><svg class="icon"><use href="#i-check"/></svg>`;
+      list.appendChild(li); return li;
+    });
+    select.tabIndex = -1; select.setAttribute('aria-hidden', 'true');
+    wrap.append(btn, list);
+    let focus = select.selectedIndex;
+    const sync = () => {
+      label.textContent = select.options[select.selectedIndex].textContent;
+      opts.forEach((o, i) => o.setAttribute('aria-selected', String(i === select.selectedIndex)));
+    };
+    const setFocus = (i) => { focus = (i + opts.length) % opts.length; opts.forEach((o, k) => o.classList.toggle('is-focus', k === focus)); opts[focus].scrollIntoView({ block: 'nearest' }); };
+    const open = () => {
+      closeAllDd(wrap);
+      const r = wrap.getBoundingClientRect();
+      wrap.classList.toggle('drop-up', window.innerHeight - r.bottom < 300 && r.top > 300);
+      wrap.classList.add('is-open'); btn.setAttribute('aria-expanded', 'true'); setFocus(select.selectedIndex);
+    };
+    const close = () => { wrap.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); opts.forEach((o) => o.classList.remove('is-focus')); };
+    wrap.__close = close;
+    const choose = (i) => {
+      if (select.selectedIndex !== i) { select.selectedIndex = i; select.dispatchEvent(new Event('change', { bubbles: true })); }
+      sync(); close(); btn.focus();
+    };
+    btn.addEventListener('click', () => (wrap.classList.contains('is-open') ? close() : open()));
+    opts.forEach((o, i) => { o.addEventListener('click', () => choose(i)); o.addEventListener('mousemove', () => setFocus(i)); });
+    btn.addEventListener('keydown', (e) => {
+      const isOpen = wrap.classList.contains('is-open');
+      if (['ArrowDown', 'ArrowUp'].includes(e.key)) { e.preventDefault(); if (!isOpen) open(); else setFocus(focus + (e.key === 'ArrowDown' ? 1 : -1)); }
+      else if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); isOpen ? choose(focus) : open(); }
+      else if (e.key === 'Escape' || e.key === 'Tab') close();
+    });
+    select.addEventListener('change', sync);
+    sync();
+  });
+  document.addEventListener('click', (e) => { if (!e.target.closest('.dd')) closeAllDd(); });
+
   /* ---------- 7. Savings calculator ---------- */
   const state = { type: 'home', bill: 250, area: 1200, sun: 'full', addons: new Set(['battery', 'ev']) };
   const SUN = { full: { offset: 0.88, yield: 2290 }, partial: { offset: 0.74, yield: 1830 }, shade: { offset: 0.52, yield: 1370 } };
@@ -275,7 +332,7 @@
     lead.classList.add('is-sent');
   });
   $$('[required]', lead).forEach((inp) => inp.addEventListener('input', () => inp.closest('.field').classList.remove('is-invalid')));
-  $('[data-reset]', lead).addEventListener('click', () => { lead.reset(); lead.classList.remove('is-sent'); });
+  $('[data-reset]', lead).addEventListener('click', () => { lead.reset(); $$('select', lead).forEach((s) => s.dispatchEvent(new Event('change'))); lead.classList.remove('is-sent'); });
   $('#quoteBtn').addEventListener('click', () => {
     const msg = lead.message;
     msg.value = `Calculator estimate: ${els.year.textContent}/year, ${els.system.textContent}, payback ${els.payback.textContent}.`;

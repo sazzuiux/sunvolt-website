@@ -203,6 +203,37 @@ ul { list-style: none; margin: 0; padding: 0; }
 .field__select { position: relative; }
 .field__select .field__control { padding-right: 44px; cursor: pointer; }
 .field__select .icon { position: absolute; right: 16px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); pointer-events: none; }
+/* Custom dropdown (replaces the OS menu so it matches the brand) */
+.dd { position: relative; }
+.dd select { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.dd__btn { display: flex; align-items: center; gap: 8px; padding-right: 14px !important; text-align: left; cursor: pointer; }
+.dd__btn span { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dd__btn .icon { position: static; transform: none; transition: transform .3s var(--ease-out); }
+.dd.is-open .dd__btn { border-color: var(--forest-950); box-shadow: 0 0 0 4px rgba(212, 240, 97, .45); }
+.dd.is-open .dd__btn .icon { transform: rotate(180deg); }
+.dd__list {
+  position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 40; margin: 0; padding: 6px; list-style: none;
+  background: var(--bg-page); border: 1px solid var(--border-default); border-radius: var(--radius-md); box-shadow: var(--shadow-float);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: top center;
+  transition: opacity .2s ease, transform .3s var(--ease-out), visibility .2s; max-height: 280px; overflow-y: auto;
+}
+.dd.is-open .dd__list { opacity: 1; visibility: visible; transform: none; }
+.dd.drop-up .dd__list { top: auto; bottom: calc(100% + 8px); transform-origin: bottom center; }
+.dd__opt {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 12px;
+  font-weight: 400; font-size: 15px; line-height: 1.3; color: var(--text-primary); cursor: pointer; transition: background-color .15s;
+}
+.dd__opt .icon { position: static; transform: none; width: 16px; height: 16px; opacity: 0; color: var(--text-on-brand); stroke-width: 2.2; }
+.dd__opt:hover, .dd__opt.is-focus { background: var(--bg-subtle); }
+.dd__opt[aria-selected="true"] { background: var(--bg-brand); font-weight: 500; }
+.dd__opt[aria-selected="true"] .icon { opacity: 1; }
+.field--dark .dd__btn { color: var(--text-inverse); }
+.field--dark .dd.is-open .dd__btn { border-color: var(--lime-500); box-shadow: 0 0 0 4px rgba(212, 240, 97, .18); }
+.field--dark .dd__list { background: var(--bg-inverse-raised); border-color: var(--border-inverse); box-shadow: 0 24px 48px -8px rgba(0,0,0,.5); }
+.field--dark .dd__opt { color: var(--text-inverse); }
+.field--dark .dd__opt:hover, .field--dark .dd__opt.is-focus { background: var(--bg-glass); }
+.field--dark .dd__opt[aria-selected="true"] { background: var(--bg-brand); color: var(--text-on-brand); }
+
 textarea.field__control { height: 96px; padding: 16px 18px; resize: vertical; }
 .field--dark .field__label { color: var(--text-inverse-muted); }
 .field--dark .field__control { background: var(--bg-glass); border-color: var(--border-inverse); color: var(--text-inverse); }
@@ -520,7 +551,8 @@ textarea.field__control { height: 96px; padding: 16px 18px; resize: vertical; }
 .pcard { border-radius: var(--radius-xl); overflow: hidden; position: relative; }
 .pcard--tall { grid-row: 1 / 3; background: var(--bg-page); padding: 12px; display: flex; flex-direction: column; }
 .pcard--tall > img { height: 300px; width: 100%; border-radius: var(--radius-lg); object-fit: cover; flex-shrink: 0; }
-.pcard__body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; padding: 24px 16px 12px; }
+.pcard__body { flex: 1; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 24px 16px 12px; }
+.pcard__body > .btn { flex: none; width: auto; }
 .pcard__text { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
 .meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .meta__step { padding: 6px 12px; border-radius: var(--radius-full); font-weight: 500; font-size: 12px; line-height: 1.2; }
